@@ -11,9 +11,9 @@ const { summarize } = require('../logic/summarizer');
 
 processingRouter.post('/', (requestObj, responseObj) => {
   const inputPayload = requestObj.body.data;
-
-  const user_id = "Sudhir Singh";
-  const email_id = "ss4736@srmisr.edu.in";
+  
+  const user_id = "sudhirsingh";
+  const email_id = "ss4736@srmist.edu.in";
   const college_roll_number = "RA2311029010062";
 
   if (!inputPayload || !Array.isArray(inputPayload)) {
