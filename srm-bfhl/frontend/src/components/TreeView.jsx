@@ -9,8 +9,8 @@ function StructureBranch({ elementTag, subElementsMap }) {
 
   return (
     <div className="structure-node">
-      <div style={{ padding: '0.1rem 0' }}>
-        <span className="element-tag" style={isLeaf ? { color: 'var(--text-secondary)' } : {}}>
+      <div style={{ padding: '0.2rem 0' }}>
+        <span className="element-tag" style={isLeaf ? { color: 'var(--text-secondary)', fontWeight: 400 } : { fontWeight: 600 }}>
           {elementTag}
         </span>
       </div>

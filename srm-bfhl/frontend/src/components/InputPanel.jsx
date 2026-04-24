@@ -56,11 +56,11 @@ export default function InputPanel({ triggerAnalysis, isProcessing }) {
   return (
     <div className="panel-container">
       <div className="helper-text">
-        Enter edges (comma or newline separated) or a valid JSON array.
+        Enter edges (e.g. A-&gt;B, B-&gt;C). Supports comma or newline. Supports JSON array input as well.
       </div>
       
       {inputError && (
-        <div style={{ color: 'var(--status-error)', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
+        <div style={{ color: 'var(--status-error)', marginBottom: '0.75rem', fontSize: '0.85rem' }}>
           Error: {inputError}
         </div>
       )}
@@ -70,17 +70,16 @@ export default function InputPanel({ triggerAnalysis, isProcessing }) {
           className="input-area"
           value={rawTextPayload}
           onChange={(eventObj) => setRawTextPayload(eventObj.target.value)}
-          placeholder="A->B, A->C&#10;B->D"
+          placeholder="A-&gt;B, A-&gt;C&#10;B-&gt;D"
         />
         
         {!inputError && parsedPreview.length > 0 && (
           <div className="parsed-preview">
-            Parsed {parsedPreview.length} entries: {JSON.stringify(parsedPreview.slice(0, 3))}
-            {parsedPreview.length > 3 ? '...' : ''}
+            Parsed: {parsedPreview.length} entries
           </div>
         )}
 
-        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '1rem', marginTop: '0.5rem' }}>
           <button type="submit" className="action-btn" disabled={isProcessing || !!inputError || parsedPreview.length === 0}>
             {isProcessing ? (
               <>

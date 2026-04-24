@@ -40,7 +40,10 @@ export default function App() {
 
       {analysisOutcome && (
         <>
-          <div className="section-label">Results</div>
+          <div className="section-label">
+            Results 
+            <span style={{ textTransform: 'none', color: 'var(--text-muted)', fontWeight: 400, marginLeft: '0.5rem', letterSpacing: 'normal' }}>(updates after analysis)</span>
+          </div>
           <SummaryCard
             metricsData={analysisOutcome.summary}
             rejectedItems={analysisOutcome.invalid_entries}
