@@ -14,9 +14,9 @@ export default function ErrorBanner({ alertMessage, dismissAlert }) {
       <button
         onClick={dismissAlert}
         style={{
-          background: 'rgba(255, 64, 129, 0.15)',
-          border: '1px solid rgba(255, 64, 129, 0.3)',
-          color: 'var(--accent-pink)',
+          background: '#FEE2E2',
+          border: '1px solid #FCA5A5',
+          color: '#991B1B',
           cursor: 'pointer',
           fontSize: '0.85rem',
           padding: '0.3rem 0.7rem',

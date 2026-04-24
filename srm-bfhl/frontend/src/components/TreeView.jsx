@@ -10,7 +10,7 @@ function StructureBranch({ elementTag, subElementsMap, depthLevel }) {
   return (
     <div className="structure-node">
       <div className="node-content-row">
-        <span className="element-tag" style={isLeaf ? { borderColor: 'rgba(124, 77, 255, 0.3)', color: 'var(--accent-violet)' } : {}}>
+        <span className="element-tag" style={isLeaf ? { borderColor: 'var(--border-focus)', color: 'var(--text-secondary)' } : {}}>
           {elementTag}
           {isLeaf && <span style={{ marginLeft: '0.4rem', fontSize: '0.7rem', opacity: 0.6 }}>leaf</span>}
         </span>

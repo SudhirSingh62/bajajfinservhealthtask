@@ -16,7 +16,7 @@ export default function HierarchyCard({ structurePayload }) {
     <div className="panel-container" style={{ animationDelay: '0.2s' }}>
       <div className="hierarchy-header-row">
         <h3>
-          <span style={{ color: 'var(--accent-cyan)', fontFamily: "'JetBrains Mono', monospace" }}>
+          <span style={{ color: 'var(--text-primary)', fontFamily: "'JetBrains Mono', monospace" }}>
             {apexElement}
           </span>
           <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '0.85rem' }}>root</span>
@@ -32,12 +32,12 @@ export default function HierarchyCard({ structurePayload }) {
         <div style={{
           padding: '2rem',
           textAlign: 'center',
-          color: 'var(--accent-pink)',
+          color: 'var(--badge-cycle-text)',
           fontWeight: 600,
           fontSize: '0.9rem',
-          background: 'rgba(255, 64, 129, 0.04)',
+          background: 'var(--badge-cycle-bg)',
           borderRadius: '12px',
-          border: '1px dashed rgba(255, 64, 129, 0.2)',
+          border: '1px dashed var(--badge-cycle-border)',
         }}>
           Cyclic dependency detected — no tree can be constructed
         </div>
