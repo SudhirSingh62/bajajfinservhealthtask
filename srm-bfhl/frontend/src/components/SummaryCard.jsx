@@ -5,9 +5,9 @@ import React from 'react';
 
 export default function SummaryCard({ metricsData, rejectedItems, redundantEdges }) {
   return (
-    <div className="panel-container">
-      <h2 style={{ marginBottom: '1rem' }}>Diagnostic Overview</h2>
-      
+    <div className="panel-container" style={{ animationDelay: '0.1s' }}>
+      <h2 style={{ marginBottom: '1.25rem' }}>Diagnostic Overview</h2>
+
       <div className="grid-layout" style={{ marginBottom: '1.5rem' }}>
         <div className="metric-block">
           <div className="metric-digit">{metricsData.total_trees}</div>
@@ -15,26 +15,32 @@ export default function SummaryCard({ metricsData, rejectedItems, redundantEdges
         </div>
         <div className="metric-block">
           <div className="metric-digit">{metricsData.total_cycles}</div>
-          <div className="metric-caption">Cycles Identified</div>
+          <div className="metric-caption">Cycles Found</div>
         </div>
         <div className="metric-block">
-          <div className="metric-digit">{metricsData.largest_tree_root || 'None'}</div>
-          <div className="metric-caption">Apex Root</div>
+          <div className="metric-digit" style={{ fontSize: '2.2rem' }}>
+            {metricsData.largest_tree_root || '—'}
+          </div>
+          <div className="metric-caption">Deepest Root</div>
         </div>
       </div>
 
       {(rejectedItems.length > 0 || redundantEdges.length > 0) && (
-        <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '1rem' }}>
+        <div style={{ borderTop: '1px solid var(--border-glass)', paddingTop: '1.25rem' }}>
           {rejectedItems.length > 0 && (
-            <div style={{ marginBottom: '0.75rem' }}>
-              <span className="status-badge invalid-badge" style={{ marginRight: '0.5rem' }}>Malformed Edges</span>
-              <span style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{rejectedItems.join(', ')}</span>
+            <div style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <span className="status-badge invalid-badge">Malformed</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: "'JetBrains Mono', monospace" }}>
+                {rejectedItems.join(' · ')}
+              </span>
             </div>
           )}
           {redundantEdges.length > 0 && (
-            <div>
-              <span className="status-badge duplicate-badge" style={{ marginRight: '0.5rem' }}>Redundant Edges</span>
-              <span style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{redundantEdges.join(', ')}</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <span className="status-badge duplicate-badge">Duplicates</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: "'JetBrains Mono', monospace" }}>
+                {redundantEdges.join(' · ')}
+              </span>
             </div>
           )}
         </div>
