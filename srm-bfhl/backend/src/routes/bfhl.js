@@ -12,9 +12,9 @@ const { summarize } = require('../logic/summarizer');
 processingRouter.post('/', (requestObj, responseObj) => {
   const inputPayload = requestObj.body.data;
   
-  const user_id = "fullname_ddmmyyyy";
-  const email_id = "your@college.edu";
-  const college_roll_number = "YOURROLL";
+  const user_id = "sudhir_singh_24042026";
+  const email_id = "sudhir.singh@college.edu";
+  const college_roll_number = "YOUR_ROLL_NUMBER";
 
   if (!inputPayload || !Array.isArray(inputPayload)) {
     return responseObj.status(400).json({ error: "Invalid input data format" });
