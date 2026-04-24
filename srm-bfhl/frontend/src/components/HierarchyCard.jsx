@@ -13,36 +13,34 @@ export default function HierarchyCard({ structurePayload }) {
   } = structurePayload;
 
   return (
-    <div className="panel-container" style={{ animationDelay: '0.2s' }}>
-      <div className="hierarchy-header-row">
+    <div className="panel-container" style={{ margin: 0 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
         <h3>
-          <span style={{ color: 'var(--text-primary)', fontFamily: "'JetBrains Mono', monospace" }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", marginRight: '0.5rem' }}>
             {apexElement}
           </span>
-          <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '0.85rem' }}>root</span>
+          <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '0.8rem' }}>(root)</span>
         </h3>
         {containsCycle ? (
-          <span className="status-badge cycle-badge">⚠ Cycle</span>
+          <span className="status-badge cycle-badge">Cycle Detected</span>
         ) : (
-          <span className="status-badge tree-badge">Depth {branchDepth}</span>
+          <span className="status-badge tree-badge">Depth: {branchDepth}</span>
         )}
       </div>
 
       {containsCycle ? (
         <div style={{
-          padding: '2rem',
-          textAlign: 'center',
-          color: 'var(--badge-cycle-text)',
-          fontWeight: 600,
-          fontSize: '0.9rem',
-          background: 'var(--badge-cycle-bg)',
-          borderRadius: '12px',
-          border: '1px dashed var(--badge-cycle-border)',
+          color: 'var(--status-error)',
+          fontSize: '0.85rem',
+          paddingTop: '0.5rem',
+          borderTop: '1px solid var(--border-default)'
         }}>
-          Cyclic dependency detected — no tree can be constructed
+          Tree unbuildable due to cycle.
         </div>
       ) : (
-        <TreeView nestedTopology={nestedTopology} />
+        <div style={{ paddingTop: '0.5rem', borderTop: '1px solid var(--border-default)' }}>
+          <TreeView nestedTopology={nestedTopology} />
+        </div>
       )}
     </div>
   );

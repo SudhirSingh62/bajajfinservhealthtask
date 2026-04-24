@@ -3,26 +3,24 @@
 
 import React from 'react';
 
-function StructureBranch({ elementTag, subElementsMap, depthLevel }) {
+function StructureBranch({ elementTag, subElementsMap }) {
   const branchKeys = Object.keys(subElementsMap || {}).sort();
   const isLeaf = branchKeys.length === 0;
 
   return (
     <div className="structure-node">
-      <div className="node-content-row">
-        <span className="element-tag" style={isLeaf ? { borderColor: 'var(--border-focus)', color: 'var(--text-secondary)' } : {}}>
+      <div style={{ padding: '0.1rem 0' }}>
+        <span className="element-tag" style={isLeaf ? { color: 'var(--text-secondary)' } : {}}>
           {elementTag}
-          {isLeaf && <span style={{ marginLeft: '0.4rem', fontSize: '0.7rem', opacity: 0.6 }}>leaf</span>}
         </span>
       </div>
       {branchKeys.length > 0 && (
-        <div className="nested-branches">
+        <div>
           {branchKeys.map((keyIdentifier) => (
             <StructureBranch
               key={keyIdentifier}
               elementTag={keyIdentifier}
               subElementsMap={subElementsMap[keyIdentifier]}
-              depthLevel={depthLevel + 1}
             />
           ))}
         </div>
@@ -36,20 +34,19 @@ export default function TreeView({ nestedTopology }) {
 
   if (apexKeys.length === 0) {
     return (
-      <div style={{ color: 'var(--text-muted)', fontStyle: 'italic', padding: '1rem' }}>
-        Empty topology
+      <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+        [Empty]
       </div>
     );
   }
 
   return (
-    <div style={{ padding: '0.5rem 0' }}>
+    <div style={{ marginTop: '-0.2rem' }}>
       {apexKeys.map((keyIdentifier) => (
         <StructureBranch
           key={keyIdentifier}
           elementTag={keyIdentifier}
           subElementsMap={nestedTopology[keyIdentifier]}
-          depthLevel={0}
         />
       ))}
     </div>

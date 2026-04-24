@@ -21,7 +21,7 @@ export default function App() {
       setAnalysisOutcome(serverData);
     } catch (failure) {
       setSystemAlert(
-        failure.response?.data?.error || failure.message || 'System fault encountered during analysis.'
+        failure.response?.data?.error || failure.message || 'Server error occurred.'
       );
     } finally {
       setProcessingState(false);
@@ -30,28 +30,27 @@ export default function App() {
 
   return (
     <div className="main-wrapper">
-      <h1 className="header-title">BFHL Topography Engine</h1>
-      <p className="tagline">Advanced hierarchical mapping &amp; structural diagnostics</p>
+      <h1>Network Structure Analyzer</h1>
+      <p className="tagline">Internal tool for parsing and validating hierarchical edge definitions.</p>
 
       <ErrorBanner alertMessage={systemAlert} dismissAlert={() => setSystemAlert(null)} />
 
+      <div className="section-label">Input</div>
       <InputPanel triggerAnalysis={processNetworkRequest} isProcessing={processingState} />
 
       {analysisOutcome && (
         <>
+          <div className="section-label">Results</div>
           <SummaryCard
             metricsData={analysisOutcome.summary}
             rejectedItems={analysisOutcome.invalid_entries}
             redundantEdges={analysisOutcome.duplicate_edges}
           />
 
-          <div style={{ marginTop: '2.5rem' }}>
-            <h2 className="section-header">Structural Topologies</h2>
-            <div className="grid-layout">
-              {analysisOutcome.hierarchies.map((hierarchyItem, index) => (
-                <HierarchyCard key={`hierarchy-${index}`} structurePayload={hierarchyItem} />
-              ))}
-            </div>
+          <div className="grid-layout" style={{ marginTop: '1rem' }}>
+            {analysisOutcome.hierarchies.map((hierarchyItem, index) => (
+              <HierarchyCard key={`hierarchy-${index}`} structurePayload={hierarchyItem} />
+            ))}
           </div>
         </>
       )}

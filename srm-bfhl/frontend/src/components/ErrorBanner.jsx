@@ -8,25 +8,8 @@ export default function ErrorBanner({ alertMessage, dismissAlert }) {
 
   return (
     <div className="alert-box">
-      <span style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontSize: '1.1rem' }}>⚠</span> {alertMessage}
-      </span>
-      <button
-        onClick={dismissAlert}
-        style={{
-          background: '#FEE2E2',
-          border: '1px solid #FCA5A5',
-          color: '#991B1B',
-          cursor: 'pointer',
-          fontSize: '0.85rem',
-          padding: '0.3rem 0.7rem',
-          borderRadius: '6px',
-          fontWeight: 600,
-          transition: 'all 0.2s ease',
-        }}
-      >
-        Dismiss
-      </button>
+      <span>{alertMessage}</span>
+      <button onClick={dismissAlert}>Dismiss</button>
     </div>
   );
 }
